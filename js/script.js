@@ -72,22 +72,14 @@ function atualizarTroco() {
     const trocoElement = document.getElementById('troco');
     const faltaElement = document.getElementById('falta');
 
-    // Remove a classe de negativo se existir
-    trocoElement.classList.remove('negativo');
-    faltaElement.classList.remove('negativo');
-
     if (valorCliente >= total) {
         const troco = valorCliente - total;
         trocoElement.textContent = `R$${troco.toFixed(2)}`;
-        if (troco < 0) {
-            trocoElement.classList.add('negativo');
-        }
-        faltaElement.textContent = `R$0,00`;
+        faltaElement.textContent = `R$0,00`;  // Nenhuma falta
     } else {
         const falta = total - valorCliente;
         trocoElement.textContent = `R$${(falta * -1).toFixed(2)}`;  // Troco negativo
-        trocoElement.classList.add('negativo');
-        faltaElement.textContent = `R$0,00`;
+        faltaElement.textContent = `R$0,00`;  // Nenhuma falta
     }
     
     document.getElementById('valor-cliente').textContent = `R$${valorCliente.toFixed(2)}`;
