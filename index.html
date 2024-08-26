@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Nossa Loja!</h1>
+        <nav>
+            <ul>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#carrinho">Carrinho</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="produtos">
+            <h2>Produtos</h2>
+            <div class="produto" data-preco="10.00">
+                <h3>Produto 1</h3>
+                <p>Descrição do Produto 1</p>
+                <p>Preço: R$10,00</p>
+                <button onclick="adicionarAoCarrinho('Produto 1', 10.00)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto" data-preco="20.00">
+                <h3>Produto 2</h3>
+                <p>Descrição do Produto 2</p>
+                <p>Preço: R$20,00</p>
+                <button onclick="adicionarAoCarrinho('Produto 2', 20.00)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+        
+        <section id="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <ul id="itens-carrinho"></ul>
+            <p>Total: <span id="total">R$0,00</span></p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Nossa Loja. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
