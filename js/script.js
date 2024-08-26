@@ -78,12 +78,13 @@ function atualizarTroco() {
         faltaElement.textContent = `R$0,00`;  // Nenhuma falta
     } else {
         const falta = total - valorCliente;
-        trocoElement.textContent = `R$0,00`;  // Nenhum troco
-        faltaElement.textContent = `R$${falta.toFixed(2)}`;
+        trocoElement.textContent = `R$${(falta * -1).toFixed(2)}`;  // Troco negativo
+        faltaElement.textContent = `R$0,00`;  // Nenhuma falta
     }
     
-    document.getElementById('valor-cliente-display').textContent = `R$${valorCliente.toFixed(2)}`;
+    document.getElementById('valor-cliente').textContent = `R$${valorCliente.toFixed(2)}`;
 }
+
 
 function removerProduto(index) {
     produtos.splice(index, 1);
