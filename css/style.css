@@ -59,3 +59,60 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#form-cadastro {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px auto;
+}
+
+#form-cadastro label {
+    margin-top: 10px;
+}
+
+#form-cadastro input {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#form-cadastro button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#form-cadastro button:hover {
+    background-color: #0056b3;
+}
+
+#lista-produtos .produto {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#lista-produtos .produto button.editar {
+    background-color: #ffc107;
+    color: #000;
+}
+
+#lista-produtos .produto button.editar:hover {
+    background-color: #e0a800;
+}
+
+#lista-produtos .produto button.remover {
+    background-color: #dc3545;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#lista-produtos .produto button.remover:hover {
+    background-color: #c82333;
+}
+
