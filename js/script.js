@@ -10,10 +10,11 @@ let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
 function cadastrarProduto(event) {
     event.preventDefault();
     const nome = document.getElementById('nome-produto').value;
+    const descricao = document.getElementById('descricao-produto').value;
     const preco = parseFloat(document.getElementById('preco-produto').value);
 
-    if (nome && !isNaN(preco) && preco > 0) {
-        produtos.push({ nome, preco });
+    if (nome && descricao && !isNaN(preco) && preco > 0) {
+        produtos.push({ nome, descricao, preco });
         localStorage.setItem('produtos', JSON.stringify(produtos));
         document.getElementById('form-cadastro').reset();
         carregarProdutos();
@@ -29,7 +30,7 @@ function carregarProdutos() {
         div.classList.add('produto');
         div.innerHTML = `
             <h3>${produto.nome}</h3>
-            <p>Descrição: ${produto.nome} - Atualize a descrição se necessário.</p>
+            <p>Descrição: ${produto.descricao}</p>
             <p>Preço: R$${produto.preco.toFixed(2)}</p>
             <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>
             <button class="editar" onclick="editarProduto(${index})">Editar</button>
@@ -69,10 +70,11 @@ function removerProduto(index) {
 
 function editarProduto(index) {
     const novoNome = prompt("Digite o novo nome do produto:", produtos[index].nome);
+    const novaDescricao = prompt("Digite a nova descrição do produto:", produtos[index].descricao);
     const novoPreco = parseFloat(prompt("Digite o novo preço do produto:", produtos[index].preco));
 
-    if (novoNome && !isNaN(novoPreco) && novoPreco > 0) {
-        produtos[index] = { nome: novoNome, preco: novoPreco };
+    if (novoNome && novaDescricao && !isNaN(novoPreco) && novoPreco > 0) {
+        produtos[index] = { nome: novoNome, descricao: novaDescricao, preco: novoPreco };
         localStorage.setItem('produtos', JSON.stringify(produtos));
         carregarProdutos();
     }
