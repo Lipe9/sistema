@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Teste
-    </title>
+    <title>Teste</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -27,9 +25,7 @@
         </section>
         
         <section id="carrinho">
-            <h2>
-                Orçamento:
-            </h2>
+            <h2>Orçamento:</h2>
             <ul id="itens-carrinho"></ul>
             <p>Total: <span id="total">R$0,00</span></p>
         </section>
@@ -37,6 +33,7 @@
         <section id="cadastrar">
             <h2>Cadastrar Produto</h2>
             <form id="form-cadastro">
+                <input type="hidden" id="produto-id">
                 <label for="nome-produto">Nome:</label>
                 <input type="text" id="nome-produto" required>
                 <label for="descricao-produto">Descrição:</label>
@@ -49,7 +46,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 developing by Felipe</p>
+        <p>&copy; 2024 by Felipe</p>
     </footer>
 
     <script src="js/script.js"></script>
