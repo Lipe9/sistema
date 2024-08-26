@@ -1,27 +1,3 @@
-let carrinho = [];
-let total = 0;
-
-function adicionarAoCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
-    atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-    const listaItens = document.getElementById('itens-carrinho');
-    const totalElement = document.getElementById('total');
-    listaItens.innerHTML = '';
-    
-    total = 0;
-
-    carrinho.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nome} - R$${item.preco.toFixed(2)}`;
-        listaItens.appendChild(li);
-        total += item.preco;
-    });
-
-    totalElement.textContent = `R$${total.toFixed(2)}`;
-}
 document.addEventListener('DOMContentLoaded', () => {
     carregarProdutos();
     document.getElementById('form-cadastro').addEventListener('submit', cadastrarProduto);
@@ -53,6 +29,7 @@ function carregarProdutos() {
         div.classList.add('produto');
         div.innerHTML = `
             <h3>${produto.nome}</h3>
+            <p>Descrição: ${produto.nome} - Atualize a descrição se necessário.</p>
             <p>Preço: R$${produto.preco.toFixed(2)}</p>
             <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>
             <button class="editar" onclick="editarProduto(${index})">Editar</button>
@@ -100,4 +77,3 @@ function editarProduto(index) {
         carregarProdutos();
     }
 }
-
