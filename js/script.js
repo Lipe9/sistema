@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     carregarProdutos();
     document.getElementById('form-cadastro').addEventListener('submit', cadastrarProduto);
+    document.getElementById('valor-cliente').addEventListener('input', atualizarTroco);
 });
 
 let carrinho = [];
@@ -28,14 +29,14 @@ function carregarProdutos() {
     produtos.forEach((produto, index) => {
         const div = document.createElement('div');
         div.classList.add('produto');
-        div.innerHTML = 
+        div.innerHTML = `
             <h3>${produto.nome}</h3>
             <p>Descrição: ${produto.descricao}</p>
             <p>Preço: R$${produto.preco.toFixed(2)}</p>
             <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>
             <button class="editar" onclick="editarProduto(${index})">Editar</button>
             <button class="remover" onclick="removerProduto(${index})">Remover</button>
-        ;
+        `;
         listaProdutos.appendChild(div);
     });
 }
@@ -54,12 +55,25 @@ function atualizarCarrinho() {
 
     carrinho.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = ${item.nome} - R$${item.preco.toFixed(2)};
+        li.textContent = `${item.nome} - R$${item.preco.toFixed(2)}`;
         listaItens.appendChild(li);
         total += item.preco;
     });
 
-    totalElement.textContent = R$${total.toFixed(2)};
+    totalElement.textContent = `R$${total.toFixed(2)}`;
+    atualizarTroco();  // Atualizar o troco quando o carrinho muda
+}
+
+function atualizarTroco() {
+    const valorCliente = parseFloat(document.getElementById('valor-cliente').value) || 0;
+    const trocoElement = document.getElementById('troco');
+
+    if (valorCliente >= total) {
+        const troco = valorCliente - total;
+        trocoElement.textContent = `R$${troco.toFixed(2)}`;
+    } else {
+        trocoElement.textContent = `R$0,00`;
+    }
 }
 
 function removerProduto(index) {
