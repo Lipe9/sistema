@@ -97,11 +97,11 @@ main {
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-raius: 5px;
+    border-radius: 5px;
 }
 
 #form-cadastro button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 .produto {
