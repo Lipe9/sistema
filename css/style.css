@@ -44,6 +44,7 @@ main {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .produto button:hover {
@@ -69,7 +70,6 @@ main {
     background-color: #c82333;
 }
 
-/* Adicione isso ao final do arquivo css/style.css */
 #form-cadastro {
     display: flex;
     flex-direction: column;
@@ -92,11 +92,12 @@ main {
 }
 
 #form-cadastro button {
-    background-color: #007bff;
+    background-color: #28a745;
     color: #fff;
     border: none;
     padding: 10px;
     cursor: pointer;
+    border-raius: 5px;
 }
 
 #form-cadastro button:hover {
