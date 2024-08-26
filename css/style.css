@@ -69,6 +69,7 @@ main {
     background-color: #c82333;
 }
 
+/* Adicione isso ao final do arquivo css/style.css */
 #form-cadastro {
     display: flex;
     flex-direction: column;
@@ -80,9 +81,14 @@ main {
     margin-top: 10px;
 }
 
-#form-cadastro input {
+#form-cadastro input, #form-cadastro textarea {
     margin-bottom: 10px;
     padding: 5px;
+}
+
+#form-cadastro textarea {
+    height: 100px;
+    resize: vertical;
 }
 
 #form-cadastro button {
@@ -95,6 +101,44 @@ main {
 
 #form-cadastro button:hover {
     background-color: #0056b3;
+}
+
+.produto {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.produto button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.produto button:hover {
+    background-color: #218838;
+}
+
+.produto button.editar {
+    background-color: #ffc107;
+    color: #000;
+    margin-right: 10px;
+}
+
+.produto button.editar:hover {
+    background-color: #e0a800;
+}
+
+.produto button.remover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.produto button.remover:hover {
+    background-color: #c82333;
 }
 
 #itens-carrinho {
