@@ -36,7 +36,7 @@ function carregarProdutos() {
             <h3>${produto.nome}</h3>
             <p>Descrição: ${produto.descricao}</p>
             <p>Preço: R$${produto.preco.toFixed(2)}</p>
-            <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>
+            <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar Produto</button>
             <button class="editar" onclick="editarProduto(${index})">Editar</button>
             <button class="remover" onclick="removerProduto(${index})">Remover</button>
         `;
