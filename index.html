@@ -27,8 +27,8 @@
         <section id="carrinho">
             <h2>Orçamento:</h2>
             <ul id="itens-carrinho"></ul>
-            <p>Valor do cliente: <span id="total">R$0,00</span></p>
-            <p>Troco: <span id="total">R$0,00</span></p>
+            <p>Valor do cliente: <span id="valor-cliente">R$0,00</span></p>
+            <p>Troco: <span id="troco">R$0,00</span></p>
             <p>Total: <span id="total">R$0,00</span></p>
         </section>
         
@@ -42,6 +42,8 @@
                 <textarea id="descricao-produto" required></textarea>
                 <label for="preco-produto">Preço:</label>
                 <input type="number" id="preco-produto" step="0.01" required>
+                <label for="valor-cliente">Valor do Cliente:</label>
+                <input type="number" id="valor-cliente" step="0.01" placeholder="R$0,00">
                 <button type="submit">Cadastrar</button>
             </form>
         </section>
