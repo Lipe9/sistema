@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let carrinho = [];
 let total = 0;
+let valorCliente = 0;
 let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
 
 function cadastrarProduto(event) {
@@ -13,12 +14,14 @@ function cadastrarProduto(event) {
     const nome = document.getElementById('nome-produto').value;
     const descricao = document.getElementById('descricao-produto').value;
     const preco = parseFloat(document.getElementById('preco-produto').value);
+    valorCliente = parseFloat(document.getElementById('valor-cliente').value) || 0;
 
     if (nome && descricao && !isNaN(preco) && preco > 0) {
         produtos.push({ nome, descricao, preco });
         localStorage.setItem('produtos', JSON.stringify(produtos));
         document.getElementById('form-cadastro').reset();
         carregarProdutos();
+        atualizarTroco();  // Atualizar o troco após adicionar o produto
     }
 }
 
@@ -65,15 +68,21 @@ function atualizarCarrinho() {
 }
 
 function atualizarTroco() {
-    const valorCliente = parseFloat(document.getElementById('valor-cliente').value) || 0;
+    valorCliente = parseFloat(document.getElementById('valor-cliente').value) || 0;
     const trocoElement = document.getElementById('troco');
+    const faltaElement = document.getElementById('falta');
 
     if (valorCliente >= total) {
         const troco = valorCliente - total;
         trocoElement.textContent = `R$${troco.toFixed(2)}`;
+        faltaElement.textContent = `R$0,00`;  // Nenhuma falta
     } else {
-        trocoElement.textContent = `R$0,00`;
+        const falta = total - valorCliente;
+        trocoElement.textContent = `R$0,00`;  // Nenhum troco
+        faltaElement.textContent = `R$${falta.toFixed(2)}`;
     }
+    
+    document.getElementById('valor-cliente-display').textContent = `R$${valorCliente.toFixed(2)}`;
 }
 
 function removerProduto(index) {
