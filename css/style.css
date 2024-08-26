@@ -164,6 +164,7 @@ footer {
     padding: 5px;
     margin-bottom: 10px;
 }
-#falta {
+.negativo {
     color: #dc3545;
 }
+
