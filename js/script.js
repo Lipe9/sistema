@@ -1,81 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
-    carregarProdutos();
-    document.getElementById('form-cadastro').addEventListener('submit', cadastrarProduto);
-});
-
-let carrinho = [];
-let total = 0;
-let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-
-function cadastrarProduto(event) {
-    event.preventDefault();
-    const nome = document.getElementById('nome-produto').value;
-    const descricao = document.getElementById('descricao-produto').value;
-    const preco = parseFloat(document.getElementById('preco-produto').value);
-
-    if (nome && descricao && !isNaN(preco) && preco > 0) {
-        produtos.push({ nome, descricao, preco });
-        localStorage.setItem('produtos', JSON.stringify(produtos));
-        document.getElementById('form-cadastro').reset();
-        carregarProdutos();
-    }
-}
-
-function carregarProdutos() {
+    const formCadastro = document.getElementById('form-cadastro');
     const listaProdutos = document.getElementById('lista-produtos');
-    listaProdutos.innerHTML = '';
+    const produtoIdInput = document.getElementById('produto-id');
 
-    produtos.forEach((produto, index) => {
-        const div = document.createElement('div');
-        div.classList.add('produto');
-        div.innerHTML = `
-            <h3>${produto.nome}</h3>
-            <p>Descrição: ${produto.descricao}</p>
-            <p>Preço: R$${produto.preco.toFixed(2)}</p>
-            <button onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>
-            <button class="editar" onclick="editarProduto(${index})">Editar</button>
-            <button class="remover" onclick="removerProduto(${index})">Remover</button>
-        `;
-        listaProdutos.appendChild(div);
-    });
-}
+    // Função para atualizar a lista de produtos
+    function atualizarListaProdutos() {
+        const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+        listaProdutos.innerHTML = '';
 
-function adicionarAoCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
-    atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-    const listaItens = document.getElementById('itens-carrinho');
-    const totalElement = document.getElementById('total');
-    listaItens.innerHTML = '';
-    
-    total = 0;
-
-    carrinho.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nome} - R$${item.preco.toFixed(2)}`;
-        listaItens.appendChild(li);
-        total += item.preco;
-    });
-
-    totalElement.textContent = `R$${total.toFixed(2)}`;
-}
-
-function removerProduto(index) {
-    produtos.splice(index, 1);
-    localStorage.setItem('produtos', JSON.stringify(produtos));
-    carregarProdutos();
-}
-
-function editarProduto(index) {
-    const novoNome = prompt("Digite o novo nome do produto:", produtos[index].nome);
-    const novaDescricao = prompt("Digite a nova descrição do produto:", produtos[index].descricao);
-    const novoPreco = parseFloat(prompt("Digite o novo preço do produto:", produtos[index].preco));
-
-    if (novoNome && novaDescricao && !isNaN(novoPreco) && novoPreco > 0) {
-        produtos[index] = { nome: novoNome, descricao: novaDescricao, preco: novoPreco };
-        localStorage.setItem('produtos', JSON.stringify(produtos));
-        carregarProdutos();
+        produtos.forEach((produto, index) => {
+            const produtoDiv = document.createElement('div');
+            produtoDiv.classList.add('produto');
+            produtoDiv.innerHTML = `
+                <h3>${produto.nome}</h3>
+                <p>${produto.descricao}</p>
+                <p>Preço: R$${produto.preco.toFixed(2)}</p>
+                <button class="editar" data-index="${index}">Editar</button>
+                <button class="remover" data-index="${index}">Remover</button>
+            `;
+            listaProdutos.appendChild(produtoDiv);
+        });
     }
-}
+
+    // Função para salvar um produto
+    function salvarProduto(produto) {
+        const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+        if (produto.id !== undefined) {
+            produtos[produto.id] = produto;
+        } else {
+            produtos.push(produto);
+        }
+        localStorage.setItem('produtos', JSON.stringify(produtos));
+    }
+
+    // Função para lidar com o envio do formulário
+    formCadastro.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const produto = {
+            nome: document.getElementById('nome-produto').value,
+            descricao: document.getElementById('descricao-produto').value,
+            preco: parseFloat(document.getElementById('preco-produto').value),
+            id: produtoIdInput.value ? parseInt(produtoIdInput.value) : undefined
+        };
+
+        salvarProduto(produto);
+        atualizarListaProdutos();
+        formCadastro.reset();
+        produtoIdInput.value = '';
+    });
+
+    // Função para lidar com a edição e remoção de produtos
+    listaProdutos.addEventListener('click', (e) => {
+        if (e.target.classList.contains('editar')) {
+            const index = e.target.dataset.index;
+            const produtos = JSON.parse(localStorage.getItem('produtos'));
+            const produto = produtos[index];
+
+            document.getElementById('nome-produto').value = produto.nome;
+            document.getElementById('descricao-produto').value = produto.descricao;
+            document.getElementById('preco-produto').value = produto.preco;
+            produtoIdInput.value = index;
+        } else if (e.target.classList.contains('remover')) {
+            const index = e.target.dataset.index;
+            const produtos = JSON.parse(localStorage.getItem('produtos'));
+
+            produtos.splice(index, 1);
+            localStorage.setItem('produtos', JSON.stringify(produtos));
+            atualizarListaProdutos();
+        }
+    });
+
+    // Inicializar a lista de produtos
+    atualizarListaProdutos();
+});
