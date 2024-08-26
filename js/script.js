@@ -90,7 +90,7 @@ function atualizarTroco() {
         faltaElement.textContent = `R$0,00`;
     }
     
-    document.getElementById('valor-cliente-display').textContent = `R$${valorCliente.toFixed(2)}`;
+    document.getElementById('valor-cliente').textContent = `R$${valorCliente.toFixed(2)}`;
 }
 
 
