@@ -1,18 +1,7 @@
-let cart = [];
-// Mostrar notificação
-function showNotification(message) {
-    const notification = document.getElementById('cart-notification');
-    notification.textContent = message;
-    notification.classList.add('show');
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000);
-}
+// Código JS para menu mobile
+const menuHamburguer = document.querySelector(".menu-hamburguer");
+const menu = document.querySelector(".menu ul");
 
-// Alternar menu mobile
-function toggleMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const hamburger = document.querySelector('.hamburger');
-    mobileMenu.classList.toggle('show');
-    hamburger.classList.toggle('active');
-}
+menuHamburguer.addEventListener("click", () => {
+    menu.classList.toggle("open");
+});
