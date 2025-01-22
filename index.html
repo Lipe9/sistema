@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Maquiagem</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Loja de Maquiagem</h1>
-        <nav>
+        <div class="logo">
+            <img src="https://via.placeholder.com/100x50" alt="Logotipo">
+            <h1>Loja de Maquiagem</h1>
+        </div>
+        <nav class="menu">
+            <a href="#">Home</a>
+            <a href="#">Produtos</a>
+            <a href="#">Carrinho</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="mobile-menu">
             <a href="#">Home</a>
             <a href="#">Produtos</a>
             <a href="#">Carrinho</a>
@@ -42,6 +55,6 @@
     <footer>
         <p>&copy; 2025 Loja de Maquiagem. Todos os direitos reservados.</p>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
