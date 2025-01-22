@@ -4,7 +4,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fff5f8;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -19,75 +21,24 @@ header {
     z-index: 1000;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
+main {
+    flex: 1;
+    padding: 20px;
 }
 
-.logo img {
-    height: 50px;
-    margin-right: 10px;
-}
-
-nav.menu {
-    display: flex;
-    gap: 20px;
-}
-
-nav.menu a, nav.mobile-menu a {
+footer {
+    background-color: #333;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s;
-}
-
-nav.menu a:hover, nav.mobile-menu a:hover {
-    transform: scale(1.1);
-}
-
-/* Produtos */
-.products {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 20px auto;
-    max-width: 1200px;
-}
-
-.product {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    width: 300px;
+    padding: 20px;
     text-align: center;
-    background-color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.product img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-.product button {
-    background-color: #f4a9c7;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.product button:hover {
-    background-color: #e894b5;
-    transform: translateY(-3px);
+/* Footer conteúdo */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 /* Estilo do menu hambúrguer */
@@ -128,22 +79,34 @@ nav.mobile-menu {
     flex-direction: column;
     background-color: #f4a9c7;
     position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    animation: fadeInDown 0.3s ease;
+    top: 0;
+    right: 0;
+    width: 50%; /* Agora ocupa metade da tela */
+    height: 100%; /* Preenche toda a altura da tela */
+    padding: 20px;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+nav.mobile-menu a {
+    margin: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 nav.mobile-menu.show {
     display: flex;
 }
 
-nav.mobile-menu a {
-    margin: 5px 0;
-    color: white;
-    text-decoration: none;
+/* Animação do menu mobile */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 /* Responsividade */
