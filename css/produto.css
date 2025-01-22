@@ -10,88 +10,115 @@
 .produtos .card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 20px;
     width: 250px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .produtos .card img {
     max-width: 100%;
+    height: auto;
     border-radius: 10px;
     margin-bottom: 15px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
+}
+
+.produtos .card h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.produtos .card p {
+    font-size: 1.1rem;
+    color: #e63946;
+    margin-bottom: 15px;
+}
+
+.produtos .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
 .produtos .card:hover img {
     transform: scale(1.1);
 }
 
-.produtos .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.produtos .card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.produtos .card p {
-    font-size: 1rem;
-    color: #e63946;
-}
-/* Detalhes do Produto */
-.produto-detalhe {
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.produto-detalhe img {
-    max-width: 400px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    transition: transform 0.3s;
-}
-
-.produto-detalhe img:hover {
-    transform: scale(1.05);
-}
-
-.produto-detalhe h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.produto-detalhe .descricao {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.produto-detalhe .preco {
-    font-size: 1.5rem;
-    color: #e63946;
-    margin-bottom: 20px;
-}
-
-.produto-detalhe .btn-comprar {
-    padding: 10px 20px;
-    font-size: 1rem;
+/* Estilo para o botão Comprar */
+.produtos .card .btn-comprar {
+    padding: 12px 20px;
     background-color: #e63946;
     color: #fff;
     border: none;
     border-radius: 5px;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 10px;
 }
 
-.produto-detalhe .btn-comprar:hover {
+.produtos .card .btn-comprar:hover {
     background-color: #d62839;
+    transform: translateY(-3px);
 }
 
+/* Estilos para o menu hambúrguer */
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+}
 
+.menu-hamburguer span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 3px;
+    transition: transform 0.3s, background-color 0.3s, opacity 0.3s;
+}
+
+/* Animação para "X" */
+.menu-hamburguer.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-hamburguer.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menu responsivo */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #ffe3e3;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .menu-hamburguer {
+        display: flex;
+    }
+    }
+    
