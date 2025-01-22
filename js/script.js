@@ -20,5 +20,7 @@ function showNotification(message) {
 // Alternar menu mobile
 function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
+    const hamburger = document.querySelector('.hamburger');
     mobileMenu.classList.toggle('show');
+    hamburger.classList.toggle('active');
 }
