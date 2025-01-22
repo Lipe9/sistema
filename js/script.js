@@ -1,12 +1,4 @@
 let cart = [];
-
-// Adicionar produto ao carrinho
-function addToCart(productName, price) {
-    cart.push({ productName, price });
-    showNotification(`${productName} foi adicionado ao carrinho!`);
-    console.log("Carrinho:", cart);
-}
-
 // Mostrar notificação
 function showNotification(message) {
     const notification = document.getElementById('cart-notification');
