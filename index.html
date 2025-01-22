@@ -1,58 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Loja de Maquiagem</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo!</h1>
+        <h1>Loja de Maquiagem</h1>
         <nav>
-            <ul>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#carrinho">Orçamentos</a></li>
-                <li><a href="#cadastrar">Cadastrar Produto</a></li>
-            </ul>
+            <a href="#">Home</a>
+            <a href="#">Produtos</a>
+            <a href="#">Carrinho</a>
         </nav>
     </header>
-    
     <main>
-        <section id="produtos">
-            <h2>Produtos</h2> 
-            <div id="lista-produtos"></div>
-        </section>
-        
-       <section id="carrinho">
-    <h2>Orçamento:</h2>
-    <ul id="itens-carrinho"></ul>
-    <p>Valor do cliente: 
-        <input type="number" id="valor-cliente" step="0.01" placeholder="R$0,00">
-    </p>
-    <p>Troco: <span id="troco">R$0,00</span></p>
-    <p>Total: <span id="total">R$0,00</span></p>
-</section>
-        
-        <section id="cadastrar">
-            <h2>Cadastrar Produto</h2>
-            <form id="form-cadastro">
-                <input type="hidden" id="produto-id">
-                <label for="nome-produto">Nome:</label>
-                <input type="text" id="nome-produto" required>
-                <label for="descricao-produto">Descrição:</label>
-                <textarea id="descricao-produto" required></textarea>
-                <label for="preco-produto">Preço:</label>
-                <input type="number" id="preco-produto" step="0.01" required>
-                <button type="submit">Cadastrar</button>
-            </form>
-        </section>
+        <h2>Produtos em Destaque</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Batom Vermelho">
+                <h3>Batom Vermelho</h3>
+                <p>R$ 29,90</p>
+                <button onclick="addToCart('Batom Vermelho', 29.90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Base Líquida">
+                <h3>Base Líquida</h3>
+                <p>R$ 49,90</p>
+                <button onclick="addToCart('Base Líquida', 49.90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Paleta de Sombras">
+                <h3>Paleta de Sombras</h3>
+                <p>R$ 99,90</p>
+                <button onclick="addToCart('Paleta de Sombras', 99.90)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
     </main>
-
     <footer>
-        <p>&copy; 2024 by Felipe</p>
+        <p>&copy; 2025 Loja de Maquiagem. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
