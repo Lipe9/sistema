@@ -100,8 +100,8 @@ nav.menu a:hover, nav.mobile-menu a:hover {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 35px;
-    height: 30px;
+    width: 50%;
+    height: 100%;
     cursor: pointer;
     position: relative;
     z-index: 1100;
