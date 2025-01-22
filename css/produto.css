@@ -1,1 +1,97 @@
+/* Estilos para os cards de produtos */
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.produtos .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produtos .card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.produtos .card:hover img {
+    transform: scale(1.1);
+}
+
+.produtos .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.produtos .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.produtos .card p {
+    font-size: 1rem;
+    color: #e63946;
+}
+/* Detalhes do Produto */
+.produto-detalhe {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.produto-detalhe img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.produto-detalhe img:hover {
+    transform: scale(1.05);
+}
+
+.produto-detalhe h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.produto-detalhe .descricao {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.produto-detalhe .preco {
+    font-size: 1.5rem;
+    color: #e63946;
+    margin-bottom: 20px;
+}
+
+.produto-detalhe .btn-comprar {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.produto-detalhe .btn-comprar:hover {
+    background-color: #d62839;
+}
+
 
